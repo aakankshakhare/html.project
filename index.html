@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakanksha Calculator</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        /* Calculator container */
+        .calculator {
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        }
+
+        /* Calculator display */
+        .display {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 20px;
+            text-align: right;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 5px;
+            border: none;
+            background: #f3f3f3;
+            box-shadow: inset 2px 2px 5px #b0b0b0, inset -2px -2px 5px #ffffff;
+        }
+
+        /* Button grid */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        /* Styling individual buttons */
+        .button {
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: linear-gradient(145deg, #d6d6d6, #ffffff);
+            box-shadow: 2px 2px 5px #b0b0b0, -2px -2px 5px #ffffff;
+            border: none;
+        }
+
+        /* Button interaction */
+        .button:active {
+            box-shadow: inset 2px 2px 5px #b0b0b0, inset -2px -2px 5px #ffffff;
+        }
+
+        /* Instructions section */
+        .instructions {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Calculator title -->
+    <h1>Aakanksha Calculator</h1>
+
+    <!-- Calculator container -->
+    <div class="calculator">
+        <input type="text" id="display" class="display" disabled>
+
+        <!-- Button grid -->
+        <div class="buttons">
+            <button class="button" onclick="appendValue('7')">7</button>
+            <button class="button" onclick="appendValue('8')">8</button>
+            <button class="button" onclick="appendValue('9')">9</button>
+            <button class="button" onclick="appendValue('/')">/</button>
+
+            <button class="button" onclick="appendValue('4')">4</button>
+            <button class="button" onclick="appendValue('5')">5</button>
+            <button class="button" onclick="appendValue('6')">6</button>
+            <button class="button" onclick="appendValue('*')">*</button>
+
+            <button class="button" onclick="appendValue('1')">1</button>
+            <button class="button" onclick="appendValue('2')">2</button>
+            <button class="button" onclick="appendValue('3')">3</button>
+            <button class="button" onclick="appendValue('-')">-</button>
+
+            <button class="button" onclick="appendValue('0')">0</button>
+            <button class="button" onclick="appendValue('.')">.</button>
+            <button class="button" onclick="calculate()">=</button>
+            <button class="button" onclick="appendValue('+')">+</button>
+
+            <button class="button" onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+
+    <!-- Instructions below the calculator -->
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <p>Use the calculator to perform basic arithmetic operations: addition, subtraction, multiplication, and division.</p>
+        <p>Click the buttons to input numbers and operators, and press '=' to see the result. Press 'C' to clear the display.</p>
+    </div>
+
+    <script>
+        // Append values to display
+        function appendValue(value) {
+            document.getElementById("display").value += value;
+        }
+
+        // Clear the display
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        // Perform the calculation
+        function calculate() {
+            try {
+                document.getElementById("display").value = eval(document.getElementById("display").value);
+            } catch {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
